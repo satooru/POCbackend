@@ -25,7 +25,9 @@ public class FileManipulation {
     private static String readFile(String filename) {
 
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+        	Path path = Paths.get(System.getProperty("user.dir"), filename.split("\\\\"));
+        	
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toAbsolutePath().toString()));
             StringBuilder sb = new StringBuilder();
             String line;
 
@@ -42,7 +44,7 @@ public class FileManipulation {
     }
 
     public static void writeToFile(String filepath, String content) throws IOException{
-        Path path = Paths.get(filepath);
+        Path path = Paths.get(System.getProperty("user.dir"), filepath.split("\\\\"));
         if (!Files.exists(path.getParent())) path.getParent().toFile().mkdirs();
         BufferedWriter writer = new BufferedWriter(new FileWriter(filepath));
         writer.write(content);

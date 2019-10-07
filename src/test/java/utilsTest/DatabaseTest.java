@@ -6,7 +6,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import service.Application;
 import utils.Database;
 
 public class DatabaseTest {
